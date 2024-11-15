@@ -19,13 +19,13 @@ After installing Kubeflow on AWS with one of the available [deployment options](
    The `S3_BUCKET` that is exported should be the same bucket that is used by Kubeflow Pipelines.
    ```bash
    # Your cluster name
-   export CLUSTER_NAME=
+   export CLUSTER_NAME=data-eks-qa-cluster
    # Your cluster region
    export CLUSTER_REGION=
    # The S3 Bucket that is used by Kubeflow Pipelines
-   export S3_BUCKET=
+   export S3_BUCKET=data-qa-leboncoin-io-kubeflow
    # Your AWS Acconut ID
-   export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
+   export AWS_ACCOUNT_ID=248122438025
    # Name of the profile to create
    export PROFILE_NAMESPACE=
    ```

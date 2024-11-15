@@ -252,36 +252,17 @@ if __name__ == "__main__":
     load_balancer_scheme = cfg["kubeflow"]["alb"]["scheme"]
     subdomain_subject_alternative_names = cfg["route53"]["subDomain"].get("subjectAlternativeNames", None)
 
-    print_banner("Creating Subdomain in Route 53")
-    root_hosted_zone, subdomain_hosted_zone = create_subdomain_hosted_zone(
-        subdomain_name,
-        root_domain_name,
-        deployment_region,
-        root_domain_hosted_zone_id,
-    )
-    cfg["route53"]["subDomain"]["hostedZoneId"] = subdomain_hosted_zone.id
-    write_yaml_file(yaml_content=cfg, file_path=config_file_path)
+    configure_ingress_manifest("arn:aws:acm:eu-west-1:248122438025:certificate/756cd971-2a82-476a-9335-2398ed137e3b")
+    cfg["kubeflow"] = {"alb": {
+        "serviceAccount": {
+            "name": "aws-load-balancer-controller",
+            "namespace": "kube-system",
+            "policyArn": "arn:aws:iam::248122438025:role/data-eks-qa-aws-load-balancer-controller",
+        }
+    }}
 
-    print_banner("Creating Certificate in ACM")
-    (
-        root_certificate,
-        subdomain_cert_deployment_region,
-    ) = create_certificates(deployment_region, subdomain_hosted_zone, root_hosted_zone, subdomain_subject_alternative_names)
-
-    if root_certificate:
-        cfg["route53"]["rootDomain"]["certARN"] = root_certificate.arn
-    cfg["route53"]["subDomain"]["certARN"] = subdomain_cert_deployment_region.arn
-    write_yaml_file(yaml_content=cfg, file_path=config_file_path)
-
-    print_banner("Configuring Ingress and load balancer controller manifests")
-    configure_ingress_manifest(subdomain_cert_deployment_region.arn)
-    alb_sa_details = configure_load_balancer_controller(deployment_region, cluster_name)
-    cfg["kubeflow"] = {"alb": alb_sa_details}
     write_yaml_file(yaml_content=cfg, file_path=config_file_path)
 
     print_banner("Creating Ingress, load balancer and updating the domain's DNS record")
     create_ingress()
-    alb_dns = dns_update(deployment_region, cluster_name, subdomain_hosted_zone)
-    cfg["kubeflow"]["alb"]["dns"] = alb_dns
-    cfg["kubeflow"]["alb"]["scheme"] = load_balancer_scheme
     write_yaml_file(yaml_content=cfg, file_path=config_file_path)

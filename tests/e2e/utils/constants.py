@@ -3,7 +3,8 @@ Global constants module
 """
 
 DEFAULT_HOST = "http://localhost:8080/"
-DEFAULT_USER_NAMESPACE = "kubeflow-user-example-com"
+DEFAULT_USER_NAMESPACE = "kubeflow"
+DEFAULT_NAMESPACE = "kubeflow"
 DEFAULT_SYSTEM_NAMESPACE = "kube-system"
 DEFAULT_USERNAME = "user@example.com"
 DEFAULT_PASSWORD = "12341234"
