@@ -29,7 +29,7 @@ spec:
         - /usr/bin/metacontroller
         - --zap-log-level=4
         - --discovery-interval=3600s
-        image: docker.io/metacontrollerio/metacontroller:v2.0.4
+        image: dockerhub.containers.mpi-internal.com/metacontrollerio/metacontroller:v2.0.4
         name: metacontroller
         resources:
           limits:

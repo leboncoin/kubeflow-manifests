@@ -32,7 +32,7 @@ spec:
         envFrom:
         - configMapRef:
             name: tensorboard-controller-config-b98cb9gk9k
-        image: docker.io/kubeflownotebookswg/tensorboard-controller:v1.7.0
+        image: dockerhub.containers.mpi-internal.com/kubeflownotebookswg/tensorboard-controller:v1.7.0
         livenessProbe:
           httpGet:
             path: /healthz

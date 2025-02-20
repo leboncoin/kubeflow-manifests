@@ -1,7 +1,7 @@
 rds:
-  dbHost:
-  mlmdDb:
+  dbHost: kubeflow-db-qa.cyuwmccoksm9.eu-west-1.rds.amazonaws.com
+  mlmdDb: metadata_db
 s3:
-  bucketName:
+  bucketName: data-qa-leboncoin-io-kubeflow
   minioServiceHost: s3.amazonaws.com
-  minioServiceRegion:
+  minioServiceRegion: eu-west-1

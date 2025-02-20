@@ -10,7 +10,6 @@ import requests
 import pytest
 
 from kubernetes import client, config
-import kfp
 import boto3
 import mysql.connector
 

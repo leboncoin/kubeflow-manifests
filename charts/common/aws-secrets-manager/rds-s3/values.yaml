@@ -1,4 +1,4 @@
 rds:
-  secretName: 
+  secretName: rds-secret
 s3:
-  secretName: 
+  secretName: test
