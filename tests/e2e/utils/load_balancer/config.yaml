@@ -1,16 +1,16 @@
 cluster:
-  name: data-eks-qa
+  name: <<CLUSTER_NAME>>
   region: eu-west-1
 kubeflow:
   alb:
     serviceAccount:
       name: aws-load-balancer-controller
       namespace: kube-system
-      policyArn: arn:aws:iam::248122438025:role/data-eks-qa-aws-load-balancer-controller
+      policyArn: <<ROLE_ARN_KUBECONTROLLER>>
 route53:
   rootDomain:
-    hostedZoneId: Z2WZMLK6H6HQ5L
-    name: leboncoin.io
+    hostedZoneId: <<HOSTED_ZONE_ID>>
+    name: <<ROOT_DOMAIN>>
   subDomain:
-    hostedZoneId: Z2WZMLK6H6HQ5L
-    name: k8s.data.qa.leboncoin.io
+    hostedZoneId: <<HOSTED_ZONE_ID>>
+    name: <<SUBDOMAIN>>

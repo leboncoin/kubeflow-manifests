@@ -1,4 +1,4 @@
-ack_sagemaker_oidc_role: arn:aws:iam::248122438025:role/kf-ack-sm-controller-role-data-eks-qa-cluster
+ack_sagemaker_oidc_role: <<ROLE_ARN_KUBECONTROLLER>>
 cluster:
-  name: data-eks-qa-cluster
+  name: <<CLUSTER_NAME>>
   region: eu-west-1

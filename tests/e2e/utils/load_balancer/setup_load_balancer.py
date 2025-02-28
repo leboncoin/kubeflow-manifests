@@ -252,12 +252,12 @@ if __name__ == "__main__":
     load_balancer_scheme = cfg["kubeflow"]["alb"]["scheme"]
     subdomain_subject_alternative_names = cfg["route53"]["subDomain"].get("subjectAlternativeNames", None)
 
-    configure_ingress_manifest("arn:aws:acm:eu-west-1:248122438025:certificate/756cd971-2a82-476a-9335-2398ed137e3b")
+    configure_ingress_manifest("<<CERTIFICATE_ARN>>")
     cfg["kubeflow"] = {"alb": {
         "serviceAccount": {
             "name": "aws-load-balancer-controller",
             "namespace": "kube-system",
-            "policyArn": "arn:aws:iam::248122438025:role/data-eks-qa-aws-load-balancer-controller",
+            "policyArn": "<<ROLE_ARN_CONTROLLER>>",
         }
     }}
 
