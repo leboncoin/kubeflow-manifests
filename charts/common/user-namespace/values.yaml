@@ -1,2 +1,2 @@
 awsIamForServiceAccount:
-  awsIamRole: arn:aws:iam::248122438025:role/qa-eks-kubeflowflow
+  awsIamRole: <<ROLE_ARN>>

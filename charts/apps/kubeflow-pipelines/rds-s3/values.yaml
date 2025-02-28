@@ -1,8 +1,8 @@
 rds:
-  dbHost: kubeflow-db-qa.cyuwmccoksm9.eu-west-1.rds.amazonaws.com
+  dbHost: <<DB_HOST>>
   mlmdDb: metadata_db
 s3:
-  bucketName: data-qa-leboncoin-io-kubeflow
+  bucketName: <<BUCKET_NAME>>
   minioServiceHost: s3.amazonaws.com
   minioServiceRegion: eu-west-1
-  roleArn: arn:aws:iam::248122438025:role/qa-eks-kubeflowflow
+  roleArn: <<ROLE_ARN>>
